@@ -9,19 +9,22 @@
 </head>
 <body>
     <div id="hider-div"></div>
-    <div id="hud">
+    <div id="hud" class="container">
         <form id="question">
             <input type="radio" name="difficulty" id="easy" value="12" checked>
-            <label for="easy"><strong>Easy Mode</strong></label>
+            <label for="easy"><strong>Easy Mode</strong></label><br>
             <input type="radio" name="difficulty" id="normal" value="18">
-            <label for="normal"><strong>Normal Mode</strong></label>
+            <label for="normal"><strong>Normal Mode</strong></label><br>
             <input type="radio" name="difficulty" id="hard" value="24">
             <label for="hard"><strong>Hard Mode</strong></label>
         </form>
 
-        <h3 id="tries">Test</h3>
+        <div class="container timer">
+            <h3 id="tries">Test</h3>
+            <h3 id="timer"></h3>
+        </div>
 
-        <h3 id="score">Test</h3></div>
+    </div>
 
     <div id="flip-card-container" class="container"></div>
 

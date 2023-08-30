@@ -37,18 +37,6 @@ body {
     overflow-x: hidden;
 }
 
-form>label {
-    font-size: 1.5rem;
-}
-
-#tries {
-    font-size: 2rem;
-}
-
-#score {
-    font-size: 2rem;
-}
-
 
 /*Main card container*/
 

@@ -1,6 +1,20 @@
 // TODO difficulty chooser
 
-let difModifier = 12
+let difModifier = 12;
+
+let then = new Date().getTime();
+
+setInterval(() => {
+    let now = new Date().getTime();
+    let milliseconds = (now - then);
+    let milliToDisplay = (milli) => {
+        let minutes = Math.floor(milli/60000);
+        let seconds = ((milli % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
+    let timerDiv = document.querySelector('#timer');
+    timerDiv.textContent = milliToDisplay(milliseconds);
+},1000);
 
 // Defining the three difficulty modifier radio buttons
 
@@ -42,13 +56,7 @@ const TriesRefresh = () => {
 
 TriesRefresh();
 
-// Score Function
-const ScoreRefresh = () => {
-    let scoreDisplay = document.querySelector('#score');
-    scoreDisplay.textContent = `Score: ${score}`;
-};
 
-ScoreRefresh();
 
 const CreateCardIndexes = () => {
     // TODO Create a list of cards based on the modifier number
@@ -83,16 +91,16 @@ const CompareCards = () => {
         setTimeout(() => { // Good match
             if (cardsTurned[0].src.toString().split()[0].split("").slice(-5)[0] === cardsTurned[1].src.toString().split()[0].split("").slice(-5)[0]) {
                 score += 1;
-                if (score === (difModifier / 2)) {
-                    alert(`You won on ${difficulty} mode with ${tries} live(s) left !`);
+                if (score === (difModifier / 2)) { // Win
+                    let timeDiv = document.querySelector('#timer');
+                    alert(`You won on ${difficulty} mode with ${tries} live(s) left !\nTime: ${timeDiv.textContent} !`);
                     NewGame();
                 }
-                ScoreRefresh(); // +1 score
                 cardsTurned = [];
                 hider.classList.remove('overlay') // Removing hider overlay
             } else { // Wrong
                 tries -= 1;
-                if (tries === 0) {
+                if (tries === 0) { // Lose
                     alert(`You lost on ${difficulty} mode with a score of ${score} !`);
                     NewGame();
                     hider.classList.remove('overlay');
@@ -180,7 +188,6 @@ const NewGame = () => {
     CleanBoard();
     CreateCardIndexes();
     PopulateCards();
-    ScoreRefresh();
     TriesRefresh();
 };
 
