@@ -1,0 +1,64 @@
+/* Reset some default styles to ensure consistent behavior */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, ul, li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Apply a box-sizing border-box to all elements for more predictable sizing */
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/* Set a base font size and line height for better readability */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Add a max-width to prevent content from stretching too wide on larger screens */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Simple mobile-friendly navigation menu */
+.navbar {
+    background-color: #333;
+    color: #fff;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.navbar li {
+    margin: 0 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*Main card container*/
+
+#flip-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: space-around;
+}
+
+.card {
+    flex-basis: 21%;
+    width: 252px;
+    height: 180px;
+}
