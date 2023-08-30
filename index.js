@@ -2,6 +2,7 @@
 
 let difModifier = 12;
 
+
 // Audio files
 
 const winSound = new Audio('./assets/sound/win.mp3')
@@ -26,6 +27,66 @@ setInterval(() => {
     let timerDiv = document.querySelector('#timer');
     timerDiv.textContent = milliToDisplay(milliseconds);
 },1000);
+
+// Score Text Setter
+
+let easyBest = 0;
+let normalBest = 0;
+let hardBest = 0;
+let prefixSentence = "";
+
+
+const ScoreTextSet = (num) => {
+    let now = new Date().getTime();
+    let time = now - then;
+    let easy = document.querySelector('#easyScore');
+    let normal = document.querySelector('#normalScore');
+    let hard = document.querySelector('#hardScore');
+    let timeDivi = document.querySelector('#timer');
+    switch (parseInt(num)) {
+        case 12:
+            if (easyBest === 0) { // First score in this category
+                easyBest = time;
+                easy.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                break;
+            } else if (easyBest > time) { // New best score
+                easyBest = time;
+                easy.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                prefixSentence = "New best easy score !\n";
+                break;
+            } else {
+                break;
+            }
+
+        case 18:
+            if (normalBest === 0) { // First score in this category
+                normalBest = time;
+                normal.textContent = `Best Normal Score: ${timeDivi.textContent} with ${tries} lives left !}`;
+                break;
+            } else if (normalBest > time) { // New best score
+                normalBest = time;
+                normal.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                prefixSentence = "New best normal score !\n";
+                break;
+            } else {
+                break;
+            }
+        case 24:
+            if (hardBest === 0) { // First score in this category
+                hardBest = time;
+                hard.textContent = `Best Normal Score: ${timeDivi.textContent} with ${tries} lives left !}`;
+                break;
+            } else if (hardBest > time) { // New best score
+                hardBest = time;
+                hard.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                prefixSentence = "New best hard score !\n";
+                break;
+            } else {
+                break;
+            }
+    }
+};
+
 
 // Defining the three difficulty modifier radio buttons
 
@@ -109,7 +170,8 @@ const CompareCards = () => {
                 if (score === (difModifier / 2)) { // Win
                     let timeDiv = document.querySelector('#timer');
                     winSound.play();
-                    alert(`You won on ${difficulty} mode with ${tries} live(s) left !\nTime: ${timeDiv.textContent} !`);
+                    ScoreTextSet(difModifier);
+                    alert(`${prefixSentence}You won on ${difficulty} mode with ${tries} live(s) left !\nTime: ${timeDiv.textContent} !`);
                     NewGame();
                 }
                 cardsTurned = [];
@@ -207,6 +269,7 @@ const NewGame = () => {
     CreateCardIndexes();
     PopulateCards();
     TriesRefresh();
+    prefixSentence = "";
 };
 
 
