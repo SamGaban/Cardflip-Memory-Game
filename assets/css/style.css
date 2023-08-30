@@ -77,3 +77,11 @@ body {
     width: 100vw;
 }
 
+.timer {
+    text-align: center;
+}
+
+#scoresKeeper>p {
+    border: 1px solid black;
+    padding: 0.2rem;
+}

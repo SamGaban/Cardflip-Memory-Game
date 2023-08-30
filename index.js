@@ -61,7 +61,7 @@ const ScoreTextSet = (num) => {
         case 18:
             if (normalBest === 0) { // First score in this category
                 normalBest = time;
-                normal.textContent = `Best Normal Score: ${timeDivi.textContent} with ${tries} lives left !}`;
+                normal.textContent = `Best Normal Score: ${timeDivi.textContent} with ${tries} lives left !`;
                 break;
             } else if (normalBest > time) { // New best score
                 normalBest = time;
