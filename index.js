@@ -84,7 +84,7 @@ const CompareCards = () => {
             if (cardsTurned[0].src.toString().split()[0].split("").slice(-5)[0] === cardsTurned[1].src.toString().split()[0].split("").slice(-5)[0]) {
                 score += 1;
                 if (score === (difModifier / 2)) {
-                    alert(`You won on ${difficulty} mode with ${tries} lives left !`);
+                    alert(`You won on ${difficulty} mode with ${tries} live(s) left !`);
                     NewGame();
                 }
                 ScoreRefresh(); // +1 score
@@ -95,6 +95,7 @@ const CompareCards = () => {
                 if (tries === 0) {
                     alert(`You lost on ${difficulty} mode with a score of ${score} !`);
                     NewGame();
+                    hider.classList.remove('overlay');
                 }
                 TriesRefresh();
                 setTimeout(() => {
@@ -123,6 +124,7 @@ const PopulateCards = () => {
 
         let cardDiv = document.createElement('div');
         let card = document.createElement('img');
+        cardDiv.classList.add('cardDiv')
         // card.setAttribute('src', `./assets/images/${shuffled[i]}.png`);
         card.setAttribute('src', './assets/images/back.png');
         card.setAttribute('class', `card${shuffled[i]}`)

@@ -28,12 +28,13 @@ body {
 
 #hud {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 2rem 2rem;
 }
 
 body {
     background-color: #B69C72;
+    overflow-x: hidden;
 }
 
 form>label {
@@ -54,14 +55,28 @@ form>label {
 #flip-card-container {
     display: flex;
     flex-wrap: wrap;
-    flex-basis: 21%;
-    gap: 2rem;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-.card {
-    max-width: 126px;
-    max-height: 90px;
+/*#flip-card-container {*/
+/*    border: 1px solid black;*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(6, 1fr); !* 6 items per row *!*/
+/*    gap: 1rem;*/
+/*    max-width: 90vw;*/
+/*    !*margin: 1rem 2rem;*!*/
+/*}*/
+
+.cardDiv {
+    display: block;
+    max-width: calc(100% / 6);
+    padding: 0.5rem;
+    overflow: hidden;
+}
+
+.cardDiv>img {
+    height: auto;
+    width: 100%;
 }
 
 /*Overlay div to block clicks during card reveal turn*/
