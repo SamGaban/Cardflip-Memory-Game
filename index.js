@@ -6,11 +6,21 @@ let difModifier = 12
 
 let radioButtons = document.querySelectorAll('#question>input');
 
+let difficulty = "Easy";
+
 // MAKING THE RADIO BUTTONS WORK
 for (let i=0; i < 3; i++) {
     let item = radioButtons[i];
     item.onclick = () => {
         difModifier = item.value;
+        switch (difModifier) {
+            case 12:
+                difficulty = "Easy";
+            case 18:
+                difficulty = "Normal";
+            case 24:
+                difficulty = "Hard";
+        }
         NewGame();
     }
 }
@@ -19,7 +29,7 @@ let turned = 0;
 
 let score = 0;
 
-let tries = Math.floor(difModifier * 0.6)
+let tries = Math.floor(difModifier * 0.6);
 
 let shuffled;
 
@@ -73,11 +83,19 @@ const CompareCards = () => {
         setTimeout(() => { // Good match
             if (cardsTurned[0].src.toString().split()[0].split("").slice(-5)[0] === cardsTurned[1].src.toString().split()[0].split("").slice(-5)[0]) {
                 score += 1;
+                if (score === (difModifier / 2)) {
+                    alert(`You won on ${difficulty} mode with ${tries} lives left !`);
+                    NewGame();
+                }
                 ScoreRefresh(); // +1 score
                 cardsTurned = [];
                 hider.classList.remove('overlay') // Removing hider overlay
             } else { // Wrong
                 tries -= 1;
+                if (tries === 0) {
+                    alert(`You lost on ${difficulty} mode with a score of ${score} !`);
+                    NewGame();
+                }
                 TriesRefresh();
                 setTimeout(() => {
                     cardsTurned[0].classList.remove("front");
