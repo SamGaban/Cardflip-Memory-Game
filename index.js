@@ -2,6 +2,15 @@
 
 let difModifier = 12;
 
+// Audio files
+
+const winSound = new Audio('./assets/sound/win.mp3')
+winSound.volume = 0.05;
+const loseSound = new Audio('./assets/sound/lose.mp3');
+loseSound.volume = 0.03;
+
+// Timer Functionalities
+
 let then = new Date().getTime();
 
 setInterval(() => {
@@ -30,10 +39,13 @@ for (let i=0; i < 3; i++) {
         switch (difModifier) {
             case 12:
                 difficulty = "Easy";
+                break
             case 18:
                 difficulty = "Normal";
+                break
             case 24:
                 difficulty = "Hard";
+                break
         }
         NewGame();
     }
@@ -93,6 +105,7 @@ const CompareCards = () => {
                 score += 1;
                 if (score === (difModifier / 2)) { // Win
                     let timeDiv = document.querySelector('#timer');
+                    winSound.play();
                     alert(`You won on ${difficulty} mode with ${tries} live(s) left !\nTime: ${timeDiv.textContent} !`);
                     NewGame();
                 }
@@ -101,6 +114,7 @@ const CompareCards = () => {
             } else { // Wrong
                 tries -= 1;
                 if (tries === 0) { // Lose
+                    loseSound.play();
                     alert(`You lost on ${difficulty} mode with a score of ${score} !`);
                     NewGame();
                     hider.classList.remove('overlay');
@@ -181,6 +195,7 @@ const CleanBoard = () => {
 // TODO Function to link to the radio button for the game to reset each time they are pressed with new difficulty
 
 const NewGame = () => {
+    then = new Date().getTime();
     tries = Math.floor(difModifier * 0.6)
     score = 0;
     cardsTurned = [];
