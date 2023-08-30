@@ -6,7 +6,7 @@ let difModifier = 12
 
 let radioButtons = document.querySelectorAll('#question>input');
 
-
+// MAKING THE RADIO BUTTONS WORK
 for (let i=0; i < 3; i++) {
     let item = radioButtons[i];
     item.onclick = () => {
@@ -14,6 +14,8 @@ for (let i=0; i < 3; i++) {
         NewGame();
     }
 }
+
+let turned = 0;
 
 let shuffled;
 
@@ -25,7 +27,6 @@ const CreateCardIndexes = () => {
         cardIndexList.push(i)
         cardIndexList.push(i)
     }
-    console.log(cardIndexList);
 
 // TODO Randomize list
 
@@ -35,7 +36,6 @@ const CreateCardIndexes = () => {
         .map(value => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
-    console.log(shuffled)
 
 };
 
@@ -63,12 +63,12 @@ const PopulateCards = () => {
 
             for (let a = 0; a < card.classList.length; a++) {
                 // card.classList.remove("front")
-                // When a card if face up and clicked
+                // When a card is face up
                 if (card.classList[a].toString() === "front") {
                     card.classList.remove("front");
                     card.classList.add("back")
                     card.setAttribute('src', './assets/images/back.png');
-                    // When a card is face down and clicked
+                    // When a card is revealed
                 } else if (card.classList[a].toString() === "back") {
                     card.classList.remove("back");
                     card.classList.add("front")
@@ -95,14 +95,13 @@ const CleanBoard = () => {
 // TODO Function to link to the radio button for the game to reset each time they are pressed with new difficulty
 
 const NewGame = () => {
-  CleanBoard();
-  CreateCardIndexes();
-  PopulateCards();
+    turned = 0;
+    CleanBoard();
+    CreateCardIndexes();
+    PopulateCards();
 };
 
-// TODO Each card default to the back even though it has a class linked to its secret value
-// TODO if card is visible => event listener that makes it clickable
-// TODO On click, card has visible class added and clicked counter +1
+// TODO Create a function that turns all card face down without resetting the game and score
 // TODO On second click, other card visible => Compare => counter +1
 // TODO Check if card share secret class
 // TODO Card invisible => unclickable
