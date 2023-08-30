@@ -8,15 +8,20 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <div id="hider-div"></div>
+    <div id="hud">
+        <form id="question">
+            <input type="radio" name="difficulty" id="easy" value="12" checked>
+            <label for="easy"><strong>Easy Mode</strong></label>
+            <input type="radio" name="difficulty" id="normal" value="18">
+            <label for="normal"><strong>Normal Mode</strong></label>
+            <input type="radio" name="difficulty" id="hard" value="24">
+            <label for="hard"><strong>Hard Mode</strong></label>
+        </form>
 
-    <form id="question">
-        <input type="radio" name="difficulty" id="easy" value="12" checked>
-        <label for="easy">Easy Mode</label>
-        <input type="radio" name="difficulty" id="normal" value="18">
-        <label for="normal">Normal Mode</label>
-        <input type="radio" name="difficulty" id="hard" value="24">
-        <label for="hard">Hard Mode</label>
-    </form>
+        <h3 id="tries">Test</h3>
+
+        <h3 id="score">Test</h3></div>
 
     <div id="flip-card-container" class="container"></div>
 

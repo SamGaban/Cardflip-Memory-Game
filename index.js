@@ -17,7 +17,28 @@ for (let i=0; i < 3; i++) {
 
 let turned = 0;
 
+let score = 0;
+
+let tries = Math.floor(difModifier * 0.6)
+
 let shuffled;
+
+
+// Tries initialization
+const TriesRefresh = () => {
+    let triesDisplay = document.querySelector('#tries');
+    triesDisplay.textContent = `Lives: ${tries}`;
+};
+
+TriesRefresh();
+
+// Score Function
+const ScoreRefresh = () => {
+    let scoreDisplay = document.querySelector('#score');
+    scoreDisplay.textContent = `Score: ${score}`;
+};
+
+ScoreRefresh();
 
 const CreateCardIndexes = () => {
     // TODO Create a list of cards based on the modifier number
@@ -41,6 +62,39 @@ const CreateCardIndexes = () => {
 
 CreateCardIndexes();
 
+let cardsTurned = [];
+
+// TODO Create a function that, when there's two cards turned, checks if they match, and if yes, keeps them upside
+
+const CompareCards = () => {
+    if (cardsTurned.length === 2) {
+        let hider = document.querySelector("#hider-div");
+        hider.classList.add('overlay') // Adding the hider overlay to prevent clicks
+        setTimeout(() => { // Good match
+            if (cardsTurned[0].src.toString().split()[0].split("").slice(-5)[0] === cardsTurned[1].src.toString().split()[0].split("").slice(-5)[0]) {
+                score += 1;
+                ScoreRefresh(); // +1 score
+                cardsTurned = [];
+                hider.classList.remove('overlay') // Removing hider overlay
+            } else { // Wrong
+                tries -= 1;
+                TriesRefresh();
+                setTimeout(() => {
+                    cardsTurned[0].classList.remove("front");
+                    cardsTurned[0].classList.add("back")
+                    cardsTurned[0].setAttribute('src', './assets/images/back.png');
+                    cardsTurned[1].classList.remove("front");
+                    cardsTurned[1].classList.add("back")
+                    cardsTurned[1].setAttribute('src', './assets/images/back.png');
+                    cardsTurned = [];
+                    hider.classList.remove('overlay') // Removing hider overlay
+                }, 1500)
+
+            }
+        }, 100)
+
+    }
+};
 
 // TODO Card populate function
 
@@ -65,11 +119,15 @@ const PopulateCards = () => {
                 // card.classList.remove("front")
                 // When a card is face up
                 if (card.classList[a].toString() === "front") {
-                    card.classList.remove("front");
-                    card.classList.add("back")
-                    card.setAttribute('src', './assets/images/back.png');
+                    console.log("Hey !")
                     // When a card is revealed
                 } else if (card.classList[a].toString() === "back") {
+                    turned += 1;
+                    // TODO keep track of turned card
+                    cardsTurned.push(card);
+                    CompareCards();
+
+
                     card.classList.remove("back");
                     card.classList.add("front")
                     card.setAttribute('src', `./assets/images/${shuffled[i]}.png`);
@@ -95,13 +153,17 @@ const CleanBoard = () => {
 // TODO Function to link to the radio button for the game to reset each time they are pressed with new difficulty
 
 const NewGame = () => {
+    tries = Math.floor(difModifier * 0.6)
+    score = 0;
+    cardsTurned = [];
     turned = 0;
     CleanBoard();
     CreateCardIndexes();
     PopulateCards();
+    ScoreRefresh();
+    TriesRefresh();
 };
 
-// TODO Create a function that turns all card face down without resetting the game and score
-// TODO On second click, other card visible => Compare => counter +1
-// TODO Check if card share secret class
-// TODO Card invisible => unclickable
+
+// TODO Check if win
+// TODO Check if lose

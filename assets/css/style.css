@@ -26,39 +26,50 @@ body {
     padding: 0 20px;
 }
 
-/* Simple mobile-friendly navigation menu */
-.navbar {
-    background-color: #333;
-    color: #fff;
-}
-
-.navbar ul {
-    list-style: none;
+#hud {
     display: flex;
-    justify-content: center;
-    padding: 10px;
+    justify-content: space-between;
+    margin: 2rem 2rem;
 }
 
-.navbar li {
-    margin: 0 10px;
+body {
+    background-color: #B69C72;
 }
 
-.navbar a {
-    text-decoration: none;
-    color: #fff;
+form>label {
+    font-size: 1.5rem;
 }
+
+#tries {
+    font-size: 2rem;
+}
+
+#score {
+    font-size: 2rem;
+}
+
 
 /*Main card container*/
 
 #flip-card-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 3rem;
+    flex-basis: 21%;
+    gap: 2rem;
     justify-content: space-around;
 }
 
 .card {
-    flex-basis: 21%;
-    width: 252px;
-    height: 180px;
+    max-width: 126px;
+    max-height: 90px;
+}
+
+/*Overlay div to block clicks during card reveal turn*/
+
+.overlay {
+    height: 200vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
 }
