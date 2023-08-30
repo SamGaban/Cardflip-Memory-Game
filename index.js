@@ -8,6 +8,8 @@ const winSound = new Audio('./assets/sound/win.mp3')
 winSound.volume = 0.05;
 const loseSound = new Audio('./assets/sound/lose.mp3');
 loseSound.volume = 0.03;
+const popSound = new Audio('./assets/sound/pop.mp3');
+popSound.volume = 0.03;
 
 // Timer Functionalities
 
@@ -103,6 +105,7 @@ const CompareCards = () => {
         setTimeout(() => { // Good match
             if (cardsTurned[0].src.toString().split()[0].split("").slice(-5)[0] === cardsTurned[1].src.toString().split()[0].split("").slice(-5)[0]) {
                 score += 1;
+                popSound.play();
                 if (score === (difModifier / 2)) { // Win
                     let timeDiv = document.querySelector('#timer');
                     winSound.play();
