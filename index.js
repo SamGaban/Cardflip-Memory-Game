@@ -36,7 +36,7 @@ for (let i=0; i < 3; i++) {
     let item = radioButtons[i];
     item.onclick = () => {
         difModifier = item.value;
-        switch (difModifier) {
+        switch (parseInt(difModifier)) {
             case 12:
                 difficulty = "Easy";
                 break
