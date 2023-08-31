@@ -1,3 +1,6 @@
+screen.orientation.lock('landscape');
+
+
 // TODO difficulty chooser
 
 let difModifier = 12;
