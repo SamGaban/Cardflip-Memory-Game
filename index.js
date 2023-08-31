@@ -47,11 +47,11 @@ const ScoreTextSet = (num) => {
         case 12:
             if (easyBest === 0) { // First score in this category
                 easyBest = time;
-                easy.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                easy.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !    `;
                 break;
             } else if (easyBest > time) { // New best score
                 easyBest = time;
-                easy.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                easy.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !    `;
                 prefixSentence = "New best easy score !\n";
                 break;
             } else {
@@ -61,11 +61,11 @@ const ScoreTextSet = (num) => {
         case 18:
             if (normalBest === 0) { // First score in this category
                 normalBest = time;
-                normal.textContent = `Best Normal Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                normal.textContent = `Best Normal Score: ${timeDivi.textContent} with ${tries} lives left !    `;
                 break;
             } else if (normalBest > time) { // New best score
                 normalBest = time;
-                normal.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                normal.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !    `;
                 prefixSentence = "New best normal score !\n";
                 break;
             } else {
@@ -74,11 +74,11 @@ const ScoreTextSet = (num) => {
         case 24:
             if (hardBest === 0) { // First score in this category
                 hardBest = time;
-                hard.textContent = `Best Normal Score: ${timeDivi.textContent} with ${tries} lives left !}`;
+                hard.textContent = `Best Normal Score: ${timeDivi.textContent} with ${tries} lives left !}    `;
                 break;
             } else if (hardBest > time) { // New best score
                 hardBest = time;
-                hard.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !`;
+                hard.textContent = `Best Easy Score: ${timeDivi.textContent} with ${tries} lives left !    `;
                 prefixSentence = "New best hard score !\n";
                 break;
             } else {

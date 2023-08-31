@@ -97,7 +97,17 @@ body {
     text-align: center;
 }
 
+.timer>h3 {
+    background-image: url("../images/hud.png");
+    background-position: center;
+    color: white;
+    margin-bottom: 1rem;
+    padding: 0 6rem;
+}
+
 #scoresKeeper>p {
+    background-image: url("../images/trihud.png");
     border: 1px solid black;
-    padding: 0.2rem;
+    color: white;
+    padding: 0.6rem;
 }
