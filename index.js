@@ -226,7 +226,6 @@ const PopulateCards = () => {
                 // card.classList.remove("front")
                 // When a card is face up
                 if (card.classList[a].toString() === "front") {
-                    console.log("Hey !")
                     // When a card is revealed
                 } else if (card.classList[a].toString() === "back") {
                     turned += 1;
@@ -271,7 +270,3 @@ const NewGame = () => {
     TriesRefresh();
     prefixSentence = "";
 };
-
-
-// TODO Check if win
-// TODO Check if lose
