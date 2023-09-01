@@ -31,7 +31,7 @@ setInterval(() => {
     timerDiv.textContent = milliToDisplay(milliseconds);
 },1000);
 
-// Score Text Setter
+// Score Text Setter -
 
 let easyBest = 0;
 let normalBest = 0;
