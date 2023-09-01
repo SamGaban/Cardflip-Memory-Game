@@ -15,7 +15,7 @@ loseSound.volume = 0.03;
 const popSound = new Audio('./assets/sound/pop.mp3');
 popSound.volume = 0.03;
 
-// Timer Functionalities
+// Timer Functionalities -
 
 let then = new Date().getTime();
 
